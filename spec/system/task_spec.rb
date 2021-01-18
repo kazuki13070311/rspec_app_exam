@@ -1,8 +1,10 @@
 require 'rails_helper'
+require 'byebug'
 
 RSpec.describe 'Task', type: :system do
   let(:project) { create(:project) }
   let(:task) { create(:task) }
+  let(:task_done) { create(:task, :done) }
 
   describe 'Task一覧' do
     let(:task_done) { create(:task, :done) }
@@ -94,6 +96,7 @@ RSpec.describe 'Task', type: :system do
   end
 
   describe 'Task削除' do
+
     context '正常系' do
       # FIXME: テストが失敗するので修正してください
       it 'Taskが削除されること' do
@@ -102,8 +105,7 @@ RSpec.describe 'Task', type: :system do
         visit project_tasks_path(project)
         click_link 'Destroy'
         page.driver.browser.switch_to.alert.accept
-        # expect(page).not_to have_content task.title
-        expect(page).to have_content "Task was successfully destroyed."
+        expect(find('.task_list')).not_to have_content task.title
         expect(Task.count).to eq 0
         expect(current_path).to eq project_tasks_path(project)
       end

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.6.4'
 
 gem 'rails', '~> 5.2.3'
 gem 'sqlite3'
@@ -32,6 +32,7 @@ group :development do
   gem 'pry-doc' # extend pry document support
   gem 'rubocop'
   gem 'rails_best_practices'
+  gem 'rubocop-rails'
 end
 
 group :test do

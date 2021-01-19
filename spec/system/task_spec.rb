@@ -7,7 +7,6 @@ RSpec.describe 'Task', type: :system do
   let(:task_done) { create(:task, :done) }
 
   describe 'Task一覧' do
-    let(:task_done) { create(:task, :done) }
 
     context '正常系' do
       it '一覧ページにアクセスした場合、Taskが表示されること' do

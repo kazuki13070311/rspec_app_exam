@@ -62,8 +62,6 @@ RSpec.describe 'Task', type: :system do
     context '正常系' do
       it 'Taskを編集した場合、一覧画面で編集後の内容が表示されること' do
         # FIXME: テストが失敗するので修正してください
-        project = create(:project)
-        task = create(:task, project_id: project.id)
         visit edit_project_task_path(project, task)
         fill_in 'Deadline', with: Time.current
         click_button 'Update Task'
@@ -72,7 +70,7 @@ RSpec.describe 'Task', type: :system do
         expect(current_path).to eq project_tasks_path(project)
       end
 
-      it 'ステータスを完了にした場合、Taskの完了日に今日の日付が登録されること' do
+      it 'ステータスを完了にした場合、Taskの完了日に今日の日 付が登録されること' do
         # TODO: ローカル変数ではなく let を使用してください
         visit edit_project_task_path(project, task)
         select 'done', from: 'Status'
